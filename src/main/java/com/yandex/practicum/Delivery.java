@@ -9,11 +9,11 @@ public class Delivery {
         }
         // Валидация расстояния
         if (distance <= 0) {
-            throw new IllegalArgumentException("Расстояние должно быть положительным числом");
+            throw new IllegalArgumentException("Расстояние должно быть положительным числом больше 0");
         }
 
         // Валидация габаритов
-        if (!dimensions.equalsIgnoreCase("маленькие") && !dimensions.equalsIgnoreCase("большие")) {
+        if (!dimensions.equalsIgnoreCase("маленький") && !dimensions.equalsIgnoreCase("большой")) {
             throw new IllegalArgumentException("Недопустимые габариты груза");
         }
 
@@ -31,9 +31,9 @@ public class Delivery {
         }
 
         // Расчет стоимости по габаритам
-        if (dimensions.equalsIgnoreCase("большие")) {
+        if (dimensions.equalsIgnoreCase("большой")) {
             cost += 200;
-        } else if (dimensions.equalsIgnoreCase("маленькие")) {
+        } else if (dimensions.equalsIgnoreCase("маленький")) {
             cost += 100;
         }
 
