@@ -7,6 +7,15 @@ public class Delivery {
         if (isFragile && distance > 30) {
             throw new IllegalArgumentException("Хрупкие грузы нельзя возить на расстояние более 30 км");
         }
+        // Валидация расстояния
+        if (distance <= 0) {
+            throw new IllegalArgumentException("Расстояние должно быть положительным числом");
+        }
+
+        // Валидация габаритов
+        if (!dimensions.equalsIgnoreCase("маленькие") && !dimensions.equalsIgnoreCase("большие")) {
+            throw new IllegalArgumentException("Недопустимые габариты груза");
+        }
 
         int cost = 0;
 
