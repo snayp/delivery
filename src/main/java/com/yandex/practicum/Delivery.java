@@ -2,7 +2,7 @@ package com.yandex.practicum;
 
 public class Delivery {
 
-    public static int calculateCost(int distance, String dimensions, boolean isFragile, String workload) {
+    public static int calculateCost(int distance, boolean isBig, boolean isFragile, String workload) {
         // Проверка на невозможность доставки хрупкого груза
         if (isFragile && distance > 30) {
             throw new IllegalArgumentException("Хрупкие грузы нельзя возить на расстояние более 30 км");
@@ -10,11 +10,6 @@ public class Delivery {
         // Валидация расстояния
         if (distance <= 0) {
             throw new IllegalArgumentException("Расстояние должно быть положительным числом больше 0");
-        }
-
-        // Валидация габаритов
-        if (!dimensions.equalsIgnoreCase("маленький") && !dimensions.equalsIgnoreCase("большой")) {
-            throw new IllegalArgumentException("Недопустимые габариты груза");
         }
 
         int cost = 0;
@@ -31,9 +26,9 @@ public class Delivery {
         }
 
         // Расчет стоимости по габаритам
-        if (dimensions.equalsIgnoreCase("большой")) {
+        if (isBig) {
             cost += 200;
-        } else if (dimensions.equalsIgnoreCase("маленький")) {
+        } else {
             cost += 100;
         }
 
